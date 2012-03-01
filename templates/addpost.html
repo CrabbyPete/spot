@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% load smartif %}
+{% load comments %}
+
+{% block js %}
+<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key="ABQIAAAAw6ArS1eE_K0sprwtT178ZhSszzQBrvuXuJup0ZrfApALDIflmxRS66rHOHcb2Zrc61i3DyxE0gAbhA" type="text/javascript">
+</script>
+<script type="text/javascript" src="/site_media/gmap.js"></script>
+{% endblock %}
+
+{% block mess_list %}
+    <div id="bodyMainContainer"  onunload="GUnload()">
+      <div class="bodyContainer">
+        <div class="seeMoreTop">
+		</div>
+
+        <div class="mid">
+		<p> Remember: You can post a report by sending an email from your computer or phone to <a href="mailto:fish@coastalflyrodders.com"><i>fish@coastalflyrodders.com</i> </a> For private groups put the group name in the subject line </p> 
+		{% if profile.address %}
+		<img src="/site_media/blank.gif" onload="showAddress( '{{profile.address}}' )" />
+		{% else %}
+		<img src="/site_media/blank.gif" onload="showAddress( 'United States' )" />
+		{% endif %}
+		
+        <!--left start -->
+          <div class="seeMoreLeft">
+            <table>
+                <tr>
+                    <td width="100"><b>Latitude:</b></td>
+                    <td id="lat"></td>
+                    <td width="25"> </td>
+                    <td width="100"><b>Longitude:</b></td>
+                    <td id="lng"></td>
+                </tr>
+          </table>
+          <div id="map"><!-- Map goes here -->
+		  </div>
+
+          <div id="map_search">
+            <form onsubmit="showAddress(this.address.value); return false">
+              <label class="break">Input the closest location, hit Search, then drag the marker:</label>
+
+              <input type="text" size="40" name="address" value="" />
+			  <input type="submit" value="Search" />
+			  <p> A map will not be included if you do not do this </p>
+            </form>
+          </div>
+
+		  <br/>
+          </div>
+          <!--left end -->
+          <!--right start -->
+
+          <div class="seeMoreRight">
+            <div class="peteD">
+              <h2>{{profile.user.first_name}} {{profile.user.last_name}}</h2>
+            </div>
+            <form name="editMessage" id="editMessage" method='post' enctype="multipart/form-data">
+              {{ form.text }}
+			  {{ form.text.errors }}
+              
+			  <input name="lati" type="hidden" />
+			  <input name="lngi" type="hidden" />
+			  <input name="pk"   type="hidden" value ="1" />
+
+            <div class="seeMorePicContainer">
+				<p>Upload a picture </p>
+				{{ form.picture_1 }}{{ form.picture_1.errors }}
+				<p>With a caption</p>
+				{{ form.caption_1 }}{{ form.caption_1.errors }}
+				<br />
+				<p>Upload a second picture</p>
+				{{ form.picture_2 }}{{ form.picture_2.errors }}
+				<p>With a caption</p>
+				{{ form.caption_2 }}{{ form.caption_2.errors }}
+				<br />
+				<p>Upload a third picture</p>
+				{{ form.picture_3 }}{{ form.picture_3.errors }}
+				<p>With a caption</p>
+				{{ form.caption_3 }}{{ form.caption_3.errors }}
+				<br />
+				<p>Upload a  fourth picture</p>
+				{{ form.picture_4 }}{{ form.picture_4.errors }}
+				<p>With a caption</p>
+				{{ form.caption_4 }}{{ form.caption_4.errors }}
+				<br />
+				{{ form.for_group }}<span class="formmargins">Is this report for a private group?</span>
+				<span class="break">What is the group name <i>( You must be a member of the group )</i></span>
+				{{ form.group_name }}{{form.group_name.errors}}
+				<br />
+				<br />
+				<input type="submit" class="button" value="Submit Report" />
+				
+			</form>
+          <div class="spacer"></div>
+        </div>
+      </div>
+    </div><!--bodymainContainer end -->
+ {% endblock %}
+ 

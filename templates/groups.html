@@ -1,0 +1,76 @@
+{% extends "mybase.html" %}
+{% load smartif %}
+
+{% block page_menu %}
+      <div id="mypage">
+        <div class="friends_container">
+          <p class="myrp">Create a group</p>
+		  {% if group %}
+          <p>Edit group properties add or drop members</p>
+		  {% else %}
+		  <p>Creating groups is very simple and fast. You can invite your friends, or club to join you.</p>
+		  {% endif %}
+          
+		  <form action = "{% url base_group %}" method="post" name="create_group" id="create_group" enctype="multipart/form-data">
+		  <div id="mypage_profilepic">
+			{% if group.image %}
+            <img src="{{group.profile_pic}}" width="170" height="170" />
+			{% else %}
+			<img src="/site_media/groups.jpg" width="170" height="170" />
+			{% endif %}
+          </div>
+		  <div class="description">
+            <br>
+			<br>
+			This will be the groups description. Here people will be able to see what the groups
+            is about and if they are interested they might request to join in.
+          </div>
+		  <div class="fitform">
+            <label class="break">Upload a logo:</label> {{ form.upload }}<br />
+            <label class="break">Select a name for your group:</label>{{ form.group_name }} <br />
+			<label class="break">Club or group website:</label>{{ form.web_site }} <br />
+            <label class="break">Add a description:</label> {{ form.description }} <br />
+            <br />
+              <input type="submit" class="button" id="submit" value={% if group %}"Edit Group"{% else %}"Create Group"{% endif %} />
+			<br />
+		  </div>
+          <div class="friends">
+		    {% for friend in friends %}
+            <div class="friends_row">
+              <div class="friends_pic">
+			  {% if friend.spotuser_set.get.mugshot %} <img src="{{friend.spotuser_set.get.mugshot}" width="145" height="132">
+			  {% else %} <img src="/site_media/friend_nopic.jpg" width="145" height="132">
+			  {% endif %}			  
+			  </div>
+              <div class="friends_nick">
+              {% if friend.spotuser_set.get.is_temporary %}
+				New User
+			  {% else %}
+				<a href="{% url friends_show %}?friend={{friend.pk}}" >{{ friend.username }}</a>
+			  {% endif %}
+              </div>
+              <div class="friends_location">
+              {{ friend.get_profile.address }}
+              </div>
+              <div class="friends_interest">
+			  {{ friend.get_profile.fish_method }}
+              </div>
+              <div class="friends_view">
+				<div id="form1">
+                  {% if friend in membership %}
+				  <label><input type="checkbox" name="friends_add" value="{{friend.pk}}" checked="true"/> Member</label>
+				  {% else %}
+				  <label><input type="checkbox" name="friends_add" value="{{friend.pk}}" /> Member</label>
+				  {% endif %}
+                </div>
+              </div>
+			 
+            </div>
+			{% endfor %}
+          </div>
+        </div><br clear="all" />
+		</form>
+        
+      </div>
+    </div><!-- InstanceEndEditable -->
+{% endblock %}

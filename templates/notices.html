@@ -1,0 +1,55 @@
+{% extends "mybase.html" %}
+
+{% load smartif %}
+{% block js %}
+{% endblock %}
+
+{% block mess_list %}
+    <div class="accept_container">
+      <p>My Notices:</p>
+      {% for notice in notices %}
+	  <div class="accept">
+	    <div class="accept_row">
+          <div class="accept_pic">
+		    {% if notice.sent_by.get_profile.mugshot %}
+			<img src='/site_media/{{notice.sent_by.get_profile.mugshot}}' alt='/site_media/results.jpg'  width=74 height=53 \>
+			{% else %}
+			<img src='/site_media/results.jpg' alt='' \>
+			{% endif %}
+		  </div>
+
+          <div class="accept_nick">
+            {% if notice.sent_by.get_profile.is_temporary %}
+			New User
+			{% else %}
+			<a href="{% url friends_show %}?friend={{ notice.sent_by.pk }}">{{notice.sent_by.username}}</a>
+			{% endif %}
+          </div>
+
+          <div class="accept_location">
+            {{ notice }}
+          </div>
+
+          <div class="accept_interest">
+            {{notice.added}}
+          </div>
+		  {% if notice.notice_type = "friends_invite" %}
+		  <div class="accept_view">
+			<form action ={% url notice_accept %} method='get'>
+				<input type="hidden" name="notice" value="{{notice.pk}}" />
+				<input type="submit" class="button" value="Accept" />
+			</form>
+          </div>
+		  {% endif %}
+		 
+		  <div class="accept_delete">
+            <form action ={% url notice_delete %} method='get'>
+			  <input type="hidden" name="notice" value="{{notice.pk}}" />
+			  <input type="submit" class="button" value="Delete" />
+			</form>
+          </div>
+        </div>
+      </div>
+	  {% endfor %}
+    </div><!-- InstanceEndEditable -->
+{% endblock %}

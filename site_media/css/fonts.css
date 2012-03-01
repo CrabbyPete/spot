@@ -1,0 +1,70 @@
+/* CSS by DisGraMM.com */
+
+body{ font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size:12px; color:#000;}
+.topmenu{ font-size:15px;}
+.header-home{ color:#FFF; text-decoration:none; font-size:15px; padding:0 15px 0 15px;}
+.header-home:hover{ color:#e14f2c;}
+.header-login{ color:#FFF; text-decoration:none; font-size:15px; padding:0 7px 0 7px;}
+.header-login:hover{ color:#e14f2c;}
+.header-about{ color:#FFF; text-decoration:none; font-size:15px; padding:0 15px 0 15px;}
+.header-about:hover{ color:#e14f2c;}
+.header-contactus:hover{ color:#e14f2c;}
+.header-contactus{ color:#FFF; text-decoration:none; font-size:15px; padding:0 15px 0 15px;}
+.header-topnavbuttons{ color:#FFF; text-decoration:none; font-size:15px; padding:0 15px 0 15px;}
+.header-topnavbuttons:hover{ color:#e14f2c;}
+.spot{color:#e14f2c; font-size:30px;}
+.tagwhite{ font-size:20px;}
+.welcome{ font-size:25px; padding-bottom:5px}
+.supf{ color:#e14f2c;}
+.sup{ text-align:right;}
+.cheat{ margin:0; padding:0 10px 0 10px;}
+
+/*SIGN UP*/
+textarea{border:1px solid #e14f2c; font-weight:bold;}
+input{border:1px solid #e14f2c; font-weight:bold;}
+.button{ border:none; background-image:url(/site_media/img/create_account.jpg); background-repeat:repeat; width:120px; height:20px; color:#FFF; text-align:center;}
+.button:hover{ color:#e14f2c;}
+
+.bigbutton{ border:none; background-image:url(/site_media/img/create_account.jpg); background-repeat:repeat; width:220px; height:20px; color:#FFF; text-align:center;}
+.bigbutton:hover{ color:#e14f2c;}
+
+.loginbutton{ border: 0px; background-image:url(/site_media/img/login.jpg); background-repeat:repeat; width:auto; height:28px; color:#FFF; margin:0 0 0 27px;}
+.loginbutton:hover{ color:#e14f2c;}
+.login{ font-size:16px; color:#e14f2c; margin:3px 0 0 0;}
+.disgramm { color:#000; text-decoration:none;}
+.disgramm:hover{ color:#e14f2c; text-decoration:underline;}
+.important{ color:#e14f2c; font-weight:bold; text-decoration:none;}
+.formmargins{ margin:0 0 0 27px;}
+.formmargins1{ margin:0 0 0 21px;}
+.formmargins2{ margin: 0 0 0 33px;}
+.formmarginslogin{ margin:0 5px 0 0;}
+.formmarginslogin1{ margin:0 8px 0 0;}
+.passwordforgot{ color:#e14f2c; font-style:italic; text-decoration:none;}
+.message_window{ font-style:italic; color:#e14f2c;}
+
+/*HOME*/
+.recentpost{ font-size:25px; color:#e14f2c;}
+.tour{ font-size:28px; color:#e14f2c;}
+.justify{ text-align:justify;}
+.more{ text-decoration:none; color:#e14f2c; font-size:12px;}
+.more:hover{ text-decoration:underline;}
+.hookup{ font-size:35px; text-decoration:underline; color:#e14f2c;}
+
+/*MYPAGE*/
+.myrp{ font-size:19px; color:#e14f2c; margin:0 0 0 .2em;}
+.myp_usr_mn{ margin:0; padding:.3em .5em .3em .5em; text-decoration:none; color:#000;}
+.myp_usr_notice{ margin:0; padding:.3em .5em .3em .5em; color:#000; background-color:red;}
+.myp_usr_mn:hover{ color:#e14f2c;}
+.editprofile{ font-size:12px; font-weight:bold; color:#000; text-decoration:none;}
+.editprofile:hover{ color:#e14f2c;}
+.welcome_user{ font-weight:bold;}
+
+/*TERMS*/
+.termstitle{ font-size:20px; color:#333;}
+.headers{ font-size:16px; font-weight:bold; color:#333; border-bottom:dotted 1px #666;}
+.termsbody{ color:#333;}
+
+/*PRIVACY*/
+.list{ list-style:circle; color:#333;}
+.links{ color:#333; font-weight:bold;}
+.links:hover{ color:#F60;}

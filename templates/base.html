@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"  xmlns:fb="http://www.facebook.com/2008/fbml">
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta name="google-site-verification" content="F25PqADUti9urfZLANsD4lz8q1T76omSSbb9u8u8usQ" />
+<meta name="description" content="Spotburn is a social network dedicated to helping fishing find out whats happening and the best places to fish" />
+<meta name="keywords" content="fishing, fishing report, bass, stripers, guides, charter, captain, spotburn" />
+<meta name="google-site-verification" content="F25PqADUti9urfZLANsD4lz8q1T76omSSbb9u8u8usQ" />
+<title>Spotburn</title>
+<link rel="shortcut icon" href="/site_media/favicon.ico" />
+
+<link href="/site_media/css/style.css" rel="stylesheet" type="text/css" />
+<link href="/site_media/css/structure.css" rel="stylesheet" type="text/css" />
+<link href="/site_media/css/fonts.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+	img, div, p, span, td, a, a:hover{ behavior: url(/site_media/css/iepngfix.htc)}
+</style>
+  
+
+</head>
+
+<body>
+  {% load i18n %}
+  {% load smartif %}
+  {% block js %}
+  {% endblock %}
+  
+<!--mainContaainer start -->
+	<div id="mainContainer">
+	<!--topmainContainer start -->
+		<div id="topMainContainer">
+			<div class="top">
+				<a href="#"><img src="/site_media/img/logo.png" alt="spotburn" title="spotburn" width="284" height="164" class="logo" /></a>
+				<div class="topRight">
+					<div class="nav">
+					<ul>
+						<li><a href="{% url homepage %}" 		title="Home"   {% if request.path == "/" %}      			class="active"{% endif %} >Home</a></li>
+						<li><a href="{% url about %}"    		title="About"  {% if request.path == "/about/" %} 			class="active"{% endif %} >About</a></li>
+						{% if request.user.is_authenticated %}
+						<li><a href="{% url base_my_page %}" 	title="My Page" {% if request.path == "/base/mypage/" or request.path == "/base/signin/" %} class="active" {% endif %}>My&nbsp;Page</a></li>
+						<li><a href="{% url base_logout %}" 	title="Log Out">Log Out</a> </li>
+						<li class="noPadd"></li>
+						{% else %}
+						<li class="noPadd"></li>
+						{% endif %}
+					</ul>
+					<p></p>
+				</div>
+				<p class="topTxt">Coastal Flyrodders message board to share the latest fishing reports with your fellow fisherman</p>
+				</div>
+			</div>
+		</div>
+	<!--topmainContainer end -->
+
+      {% block page_menu %}
+      {% endblock %}
+	  {% block body_block %}
+	  {% endblock %}
+	  
+      {% block mess_list %}
+      {% endblock %}
+      {% block profile %}
+      {% endblock %}
+      
+	<!--footer start -->
+		<div id="footer">
+			<p>&copy; 2011 Coastal Flyrodders, All Rights Reserved.</p>
+		</div>
+	<!--footer end -->
+	</div>
+<!--mainContaainer end -->
+</body>
+</html>

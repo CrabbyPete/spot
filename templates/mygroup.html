@@ -1,0 +1,142 @@
+{% extends "mybase.html" %}
+{% load smartif %}
+
+{% block js %}
+{% endblock %}
+
+{% block mess_list %}
+	<span class="recentpost">Recent Posts</span><br>
+    <br>
+
+    <div id="recentpostswrapper" class="justify">
+      {% for message in messages %}
+
+      <div class="{% cycle 'post_1' 'post_2' %}">
+        <div class="pic_user">
+          {% for photo in message.photos.all %}
+		  <img src="{{ photo.thumbnail_image.url }}">
+		  {% endfor %}
+        </div>
+
+        <div class="message_wrapper">
+          <div class="message_seemore">
+			<a href="{% url base_message %}?message={{ message.pk}}" class="message_seemore">see more</a>
+          </div>
+
+          <div id="message_detail">
+            <div class="message_user">
+              {{ message.user.username }}
+            </div>
+
+            <div class="message_date">
+              Posted at {{ message.date_added }}
+            </div>
+          </div><br clear="all">
+
+          <div class="message_message">
+            {{message.text}}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+	  <div id="moreposts_wrapper">
+	    {% if prv %}
+	    <a href="{% url base_prev_messages %}?message={{ prv }}"> <img src="/site_media/previous.png" width="20" height="13" /></a> 
+	    {% endif %}
+	  
+	    {% if nxt %}
+	    <a href="{% url base_next_messages %}?message={{ nxt }}"> <img src="/site_media/next.png"     width="20" height="13" /></a>
+		{% endif %}
+      </div>
+    </div>
+{% endblock %}
+
+{% block profile %}
+        <div id="mypage_contentwrapper">
+          <div id="mypage_profile">
+            <div id="mypage_profilepic">
+              {% if group.profile_pic %} <img src='/site_media/{{group.profile_pic}}' alt='' width="145" height="132">
+			  {% else %} <img src='/site_media/friend_nopic.jpg' alt='' width="170" height="170">
+			  {% endif %}
+
+              {% if group.admin == profile.user %}
+			  <div id="mypage_profileedit">
+                <a href="{% url base_group %}?group={{group.pk}}" class="editprofile">Edit Group</a>
+              </div>
+              {% endif %}
+            </div>
+
+            <div id="mypage_details">
+              Profile Details
+            </div>
+
+            <div id="mypage_detailsC">
+              <div class="detail">
+                Group Name
+              </div>
+
+              <div class="descriptionp">
+                {{ group.name }}
+              </div>
+
+              <div class="detail">
+                Description:
+              </div>
+
+              <div class="descriptionp">
+                {{ group.description}}
+              </div>
+
+              <div class="detail">
+                Web Site:
+              </div>
+
+              <div class="descriptionp">
+                {{group.web_site}}
+              </div>
+            </div>
+          </div>
+
+          <div id="mypage_friends">
+			Group Admin
+			<div class="mypage_myfriendsC">
+			  <div class="mypage_myfriendsP">
+                {% if group.admin.get_profile.mugshot %} <img src="/site_media/{{group.admin.get_profile.mugshot}}" width="145" height="132">
+			    {% else %} <img src="/site_media/friend_nopic.jpg" width="145" height="132">
+			    {% endif %}
+  
+              <div class="mypage_myfriendsN">
+				<a href="{% url friends_show %}?friend={{friend.pk}}" class="friend"  name = "">
+				{% if group.admin.get_profile.is_temporary %}
+				New User
+				{% else %}
+				{{ group.admin.username }}
+				{% endif %}
+				</a>
+              </div>
+            </div>
+            
+            <div class="mypage_myfriendsC">
+			  Members
+              {% for membership in group.members.all %}
+			  {% if membership.permission == "user" %}
+			  <div class="mypage_myfriendsP">
+                {% if membership.member.get_profile.mugshot %} <img src="/site_media/{{membership.member.get_profile.mugshot}}" width="145" height="132">
+			    {% else %} <img src="/site_media/friend_nopic.jpg" width="145" height="132">
+			    {% endif %}
+  
+              <div class="mypage_myfriendsN">
+				<a href="{% url friends_show %}?friend={{membership.member.pk}}" class="friend"  name = "">
+				{% if membership.member.get_profile.is_temporary %}
+				New User
+				{% else %}
+				{{ membership.member.username }}
+				{% endif %}
+				</a>
+              </div>
+            </div>
+			{% endif %}
+			{% endfor %}
+          </div><br clear="all" />
+        </div>
+{% endblock %}

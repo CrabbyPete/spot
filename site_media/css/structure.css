@@ -1,0 +1,184 @@
+/* CSS by DisGraMM.com */
+
+/*GENERAL MODS*/
+body{ margin:0; padding:0; background-image:url(/site_media/img/wrapperbg.jpg); background-repeat:no-repeat; background-color:#FFF; background-attachment:fixed; background-position:50% 1%;}
+img{ border:none;}
+li{ list-style:none; display:block; margin:0; padding:0;}
+
+/*CONTENT*/
+#wrapper{ margin: 0 auto; width:100%; height:auto; display:inline;}
+#content{ margin:0 auto; padding:0; width:970px; height:auto;}
+
+/*TOP*/
+#menutop{ margin:0 auto 0 auto; padding:0; height:195px; width:970px; display:block; background-image:url(/site_media/img/btop.png); background-repeat:no-repeat; float:left;}
+#menu{ margin:34px 0 0 0; padding:14px 0 0 0; float:right; height:32px; width:339px; background-image:url(/site_media/img/menu.jpg); background-repeat:no-repeat; text-align:center;}
+#logo{ margin:0; padding:0; width:285px; height:164px; float:left; display:block;}
+#tag{ margin:35px 0 0 0; padding:0; height:auto; width:400px; float:right;}
+
+/*BODY*/
+#bodyc{ background-image:url(/site_media/img/bodybg.png); background-repeat:repeat-y; float:left; width:970px; height:auto; margin:0; padding:5px 0 30px 0;}
+
+/*PAGES - STRUCTURE*/
+
+/*SIGNUP*/
+#signupwrapper{ margin:2em 3em 1.5em 3em; padding:0; height:auto; width:auto;}
+#signupform{ margin:0; padding:0; float:left; width:470px; height:auto;}
+#loginbox{ margin:0 0 0 25px; padding:10px 0 10px 20px; float:left; height:auto; width:278px; background:#D1EBF2; border:1px solid #999;}
+#usermessage{ margin:25px 0 0 25px; padding:6px 0 0 20px; float:left; height:155px; width:278px; background-image:url(/site_media/img/p1bg.gif); background-repeat:repeat;}
+.errorlist{ margin:2px 0 2px 0; padding:0 10px 0 0; float:right; width:260px; height:auto; font-size:10px; font-style:italic; color:#e14f2c; text-align:right;}
+
+/*HOME*/
+#homewrapper{ margin:2em 0 1.5em 3em; padding:0; height:auto; width:900px;}
+#recentpostswrapper{ margin:0; padding:0; width:550px; height:auto; float:left;}
+#recentposticon{ padding-left: 50px; }
+.post_1{ margin:0; padding:5px; width:540px; height:auto; background-image:url(/site_media/img/p1bg.gif); background-repeat:repeat; float:left;}
+.post_2{ margin:0; padding:5px; width:540px; height:auto; background-image:url(/site_media/img/p2bg.gif); background-repeat:repeat; float:left;}
+.pic_user{ margin:0; padding:3px; float:left; width:74px; height:auto; display:block;}
+.message_wrapper{ margin:0; padding:3px; width:450px; height:auto; float:left; display:block;}
+.message_user{ margin:0; padding:0 .3em 0 .3em; float:left; width:auto; font-size:17px;}
+.message_date{ margin:0 .3em 0 .3em; padding:0 3px 0 3px; float:left; font-size:12px; color:#e14f2c;}
+.message_time{ margin:0 .3em 0 .3em; padding:0 3px 0 3px; float:left; font-size:12px; color:#e14f2c;}
+.message_detail{ margin:0; padding:0; float:left; width:350px; height:auto;}
+.message_seemore{ margin:0; padding:0; float:right; background-image:url(/site_media/img/seemore.gif); background-repeat:no-repeat; width:55px; text-align:right; height:12px; font-size:10px; color:#e14f2c; text-decoration:none;}
+.message_message{ margin:0; padding:0 0 0 .3em; float:left; width:auto; height:auto;}
+.message_delete{margin:0; padding:0;float:right;}
+#moreposts_wrapper{ margin:10px 0 0 0; padding:0; width:550px; height:22px; float:left; display:block; text-align:right; color:#333; font-weight:bold;}
+.prev{ margin:0; padding:0; width:20px; height:13px; background:url(/site_media/img/previous.png) no-repeat;}
+.next{margin:0; padding:0; width:20px; height:13px; background:url(/site_media/img/next.png) no-repeat;}
+
+#recentpicwrapper{ margin:0 0 0 10px; padding:0; width:340px; height:auto; float:left;}
+.tourpic{ margin:15px 2% 0 2%; padding:0; float:left; width:auto; height:auto;}
+.tourpic  img {width:310px; height:auto;}
+#join_in{ margin:25px 0 0 0; padding:15px 30px 0 0; width:310px; height:95px; background-image:url(/site_media/img/hookup.png); background-repeat:no-repeat; float:left; text-align:right; float:right}
+
+/*ABOUT US*/
+#aboutuswrapper{margin:2em 1em 1.5em 3em; padding:0; height:auto; width:900px;}
+
+/*CONTACT US*/
+#contactuswrapper{margin:2em 1em 1.5em 3em; padding:0; height:auto; width:900px;}
+#contactus{ margin:0; padding:0; width:500px; height:auto; float:left; border-right: 1px #333 solid;}
+#iframemap{ width:300px; height:auto; float:right; margin:0 50px 0 0;}
+
+/* MY MESSAGE EDIT */
+#mymess { height:auto; width:auto;}
+#mymess_img { width: 450px; float:left; margin: 0px, 5px, 600px, 5px; padding-top: 22px; }
+#mymess img { width:450px; float:left; }
+#mymess_caption {font-size: 12px; font-weight: bolder; padding-left: 170px; text-align: center;}
+#mymess table{width: 400px; float:right }
+#map { height:400px; text-align:left; width:360px; float:right }
+#map_search { width:400px; text-align:left; padding-bottom: 10px; padding-left:0px; padding-right:0px;}
+#mymessage{ width:400px; height:auto; float:left; font-size:10px; font-style:italic; color:#333;}
+#mymessage_text{ width:400px; float:left; font-size: 12px;}
+#mymessage_comment {float:left; text-aligh:right;}
+#mymessage_comment img { width:48px; height:48px;}
+
+/*MYPAGE*/
+#mypage_top{margin:2em 1em 0 3em; padding:0; height:20px; width:900px; background-color:#9dd32e;}
+.mypage_userw{ margin:.1em 0 .1em .4em; padding:0; float:left; width:150px;}
+#mypage_userw_menu{ margin:.1em; padding:0; float:right; width:auto;}
+#mypage{margin:.5em 1em 1.5em 3em; padding:0; height:auto; width:900px;}
+#mypage_contentwrapper{margin:0 0 0 10px; padding:0; width:410px; height:auto; float:left;}
+#mypage_profile{ margin:0; padding:0; width:280px; height:auto; float:left;}
+#mypage_profilepic{ margin:0; padding:0; width:170px; height:auto; float:left;}
+#mypage_profileedit{ margin:3px 0 3px 0; padding:0; width:170px; height:auto; float:right;}
+#mypage_details{ margin:1.3em 0 .7em 0; padding:0; width:340px; height:auto; float:left; font-size:18px; color:#e14f2c;}
+#mypage_google_ad{ padding:0; margin:0; float:right;}
+
+/*MY PAGE EDITS*/
+#mypage_editC{margin:15px 0 0 0; padding:0; width:340px; height:auto; float:left; font-size:10px; font-style:italic; color:#333;}
+#mypage_logoupload{ margin:3px 0 3px 0; padding:0; width:260px; height:auto; float:left;}
+.break{ display:block; margin:5px 0 0 0; font-size:12px; color:#000; font-style:normal;}{ display:block; margin:5px 0 0 0; font-size:12px; color:#000; font-style:normal;}
+
+/*MY DETAILS*/
+#mypage_detailsC{margin:0 0 1.5em; padding:0; width:340px; height:auto; float:left;}
+.detail{ margin:.3em; padding:0; width:100px; height:auto; float:left; font-size:12px; font-weight:bold; color:#000; display:inline; float:left;}
+.descriptionp{ margin:.3em; padding:0; width:150px; height:auto; float:left; font-size:12px; color:#e14f2c; display:inline;}
+
+/*MY FRIENDS*/
+#mypage_friends{ margin:0; padding:0; width:270px; height:auto; float:left; font-size:16px; color:#e14f2c;}
+.mypage_myfriendsC{ margin:0; padding:0; width:270px; height:auto; float:left;}
+.mypage_myfriendsP{ margin:.6em; padding:0; float:left; width= auto; height= auto;}
+.mypage_myfriendsN{ margin:0; padding:0; width:170px; height:auto; float:left; text-align:center; font-size:12px; font-weight:bold;}
+.friend{ text-decoration:none; color:#e14f2c;}
+.friend:hover{ text-decoration:underline;}
+
+.user_add{ margin:.6em 0 0 0; padding:0; width:30px; height:30px; float:left; background:url(/site_media/img/Compass.png) no-repeat;}
+.tooltip{ margin:0; padding:5px; width:208px; height:78px; background:url(/site_media/img/follow.png) no-repeat; opacity:0.9; filter:alpha(opacity=90)}
+.tootipcontent{ margin:15px 0 0 0; padding:0; width:208px; height:25px; font-size:10px;}
+.spacer{ margin:0 5px 0 5px; border:none;}
+.group_add{margin:.6em 0 0 .6em; padding:0; width:30px; height:30px; float:left; background:url(/site_media/img/Compass.png) no-repeat;}
+
+/*MY GROUPS*/
+/*
+#mypage_groups{ margin:15px 0 0 0; padding:0; width:270px; height:auto; float:left; font-size:16px; color:#e14f2c;}
+.mypage_groupsC{ margin:0; padding:0; width:375px; height:auto; float:left;}
+.mypage_groupsP{ margin:.6em; padding:0; width:auto; height:auto; float:left;}
+.mypage_groupsN{ margin:0; padding:0; width:170px; height:auto; float:left; text-align:center; font-size:12px; font-weight:bold;}
+.group{ text-decoration:none; color:#e14f2c;}
+.group:hover{ text-decoration:underline;}
+#groups{ margin:0; padding:0; width:450px; height:auto; float:left;}
+*/
+#mypage_groups{ margin:15px 0 0 0; padding:0; width:270px; height:auto; float:left; font-size:16px; color:#e14f2c;}
+.mypage_groupsC{ margin:0; padding:0; width:270px; height:auto; float:left;}
+.mypage_groupsP{ margin:.6em; padding:0; width:auto; height:auto; float:left;}
+.mypage_groupsN{ margin:0; padding:0; width:170px; height:auto; float:left; text-align:center; font-size:12px; font-weight:bold;}
+.group{ text-decoration:none; color:#e14f2c;}
+.group:hover{ text-decoration:underline;}
+#groups{ margin:0; padding:0; width:450px; height:auto; float:left;}
+
+.friends_container{margin:0 0 15px 0; padding:0; width:900px; height:auto; float:left; clear:both;}
+.friends{margin:0; padding:0; width:900px; height:auto; float:left; background:#d9d7d8; clear:both;}
+.friends_row{ margin:0; padding:0; width:900px; height:80px; float:left;}
+.friends_row:hover{ background:#a9b8bf;}
+.friends_pic{ margin:13px 0 13px 5px; padding:0; width:74px; height:53px; float:left;}
+.friends_pic img { width:74px; height:53px; }
+.friends_nick{margin:30px 10px; padding:0; width:150px; height:20px; float:left; color:#e44d2e;}
+.friends_location{margin:30px 10px; padding:0; width:150px; height:20px; float:left; color:#e44d2e;}
+.friends_interest{margin:30px 10px; padding:0; width:150px; height:20px; float:left; color:#e44d2e;}
+.friends_view{margin:30px 20px; padding:0; width:85px; height:20px; float:left; color:#e44d2e;}
+.friends_invite{margin:30px 20px; padding:0; width:95px; height:20px; float:left; color:#e44d2e;}
+
+/*CREATE EDIT GROUPS*/
+.fitform{ margin:0; padding:0; width:370px; height:auto; float:left;}
+.description{ margin:0 15px 0 15px; padding:10px; width:300px; height:150px; float:left; text-align:left; font-style:italic;}
+
+
+/*SEARCH*/
+.search{ margin:0; padding:0; width:350px; height:auto; float:left;}
+.add{ margin:0 0 0 55px; padding:0; width:350px; height:auto; float:left;}
+.divider{ margin:0; padding:0; width:1px; height:181px; float:left; background:#999;}
+.results_container{margin:0; padding:0; width:900px; height:auto; float:left; clear:both;}
+.results{margin:0; padding:0; width:900px; height:auto; float:left; background:#d9d7d8; clear:both;}
+.results_row{ margin:0; padding:0; width:900px; height:80px; float:left;}
+.results_row:hover{ background:#a9b8bf;}
+.results_pic{ margin:13px 0 13px 5px; padding:0; width:74px; height:53px; background:url(/site_media/img/results.jpg); float:left;}
+.results_nick{margin:30px 10px; padding:0; width:150px; height:20px; float:left; color:#e44d2e;}
+.results_location{margin:30px 10px; padding:0; width:150px; height:20px; float:left; color:#e44d2e;}
+.results_interest{margin:30px 10px; padding:0; width:150px; height:20px; float:left; color:#e44d2e;}
+.results_view{margin:30px 20px; padding:0; width:95px; height:20px; float:left; color:#e44d2e;}
+.results_invite{margin:30px 20px; padding:0; width:95px; height:20px; float:left; color:#e44d2e;}
+
+/*ACEPT INVITE*/
+.accept_container{margin:0; padding:0; width:900px; height:auto; float:left; clear:both;}
+.accept{margin:0; padding:0; width:900px; height:auto; float:left; background:#d9d7d8; clear:both;}
+.accept_row{ margin:0; padding:0; width:900px; height:80px; float:left;}
+.accept_row:hover{ background:#a9b8bf;}
+.accept_pic{ margin:13px 0 13px 5px; padding:0; width:74px; height:53px; float:left;}
+.accept_nick{margin:30px 10px; padding:0; width:150px; height:20px; float:left; color:#e44d2e;}
+.accept_message{margin:30px 10px; padding:0; width:400px; height:20px; float:left; color:#e44d2e;}
+.accept_location{margin:30px 10px; padding:0; width:150px; height:20px; float:left; color:#e44d2e;}
+.accept_interest{margin:30px 10px; padding:0; width:150px; height:20px; float:left; color:#e44d2e;}
+.accept_view{margin:30px 20px; padding:0; width:95px; height:20px; float:left; color:#e44d2e;}
+.accept_delete{margin:30px 20px; padding:0; width:95px; height:20px; float:left; color:#e44d2e;}
+.accept_invite{margin:30px 20px; padding:0; width:95px; height:20px; float:left; color:#e44d2e;}
+
+
+
+/*LEGAL*/
+#terms{ margin:2em 5em 1.5em 3em; padding:0; height:auto; width:auto;}
+#privacy{ margin:2em 5em 1.5em 3em; padding:0; height:auto; width:auto;}
+
+
+/*FOOTER*/
+#footer{ margin:0; padding:10px 0 10px 10px; float:left; width:960px; height:auto;}
+#addtool{ float:right; margin:0; padding:0; width:83px; height:16px;}

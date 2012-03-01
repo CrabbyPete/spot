@@ -1,0 +1,1 @@
+{{invitation.from_user}} has invited {{invitation.to_user}} to be friends

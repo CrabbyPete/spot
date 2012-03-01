@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load smartif %}
+
+{% block js %}
+{% endblock %}
+
+{% block page_menu %}
+      <div id="mypage_top">
+        <div class="mypage_userw">
+		{% if group %}
+		  <span class="welcome_user">{{group.name}}</span>
+		{% else %}
+		  {% if  visit %}
+			<span class="welcome_user">{{profile.user.first_name}} {{profile.user.last_name}}'s Page</span>
+		  {% else %}
+			{% if profile.is_temporary %}
+			Welcome <span class="welcome_user">{{request.user.first_name}} {{request.user.last_name}}</span>
+			{% else %}
+			Welcome <span class="welcome_user">{{profile.user.first_name}} {{profile.user.last_name}}</span>
+			{% endif %}
+		  {% endif %}
+		{% endif %}
+		  
+        </div>
+		{% if not visit %}
+        <div id="mypage_userw_menu">
+		  {% if notices %}
+		  <a href="{% url notice_index %}" class="myp_usr_notice">You have a Message</a>|
+		  {% endif %}
+          <a href="{% url base_addpost %}{% if group %}?group={{group.name}}{% endif %}" class="myp_usr_mn">Add A Report</a>|
+		  <a href="{% url base_group %}" class="myp_usr_mn">Create A Group</a>
+        </div>
+		{% else %}
+		{% if not friend %}
+		<div id="mypage_userw_menu">
+		  <a href="{% url friends_invite %}?friend={{profile.user.pk}}" class="myp_usr_mn">Request A Friendship</a>
+        </div>
+		{% endif %}
+		{% endif %}
+
+      </div>
+	  <br />
+{% endblock %}

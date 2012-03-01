@@ -1,0 +1,6 @@
+{% if user.first_name %}
+{{user.first_name}} {{user.last_name}}
+{% else %}
+{{ user }} 
+{% endif %}
+has requested you join and be friends at SpotBurn.com. You can accept their invitation at: http://{{accept_url}}

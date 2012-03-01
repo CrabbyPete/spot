@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block page_menu %}
+      <div id="mypage">
+        <p class="myrp">Search options</p>
+
+        <p>You can look for users using their name or  e-mail</p>
+
+        <div class="search">
+          <form action="{% url friends_search %}" method="post" name="search" id="search">
+            <p class="myrp">Search for Users or Groups</p>
+			<label class="break">Find friends or Groups:</label>{{fform.user}}{{fform.user.errors}} <br>
+            <label class="break">Find by interest:</label>{{fform.interest}}{{fform.interest.errors}}<br>
+            <label class="break">Find by location:</label>{{fform.location}}{{fform.location.errors}}<br>
+            <br>
+            <input type ="submit" name="submit" class = "button" id="submit" value="Submit Info" />
+          </form>
+        </div>
+        <div class="divider"></div>
+        <div class="add">
+          <p class="myrp">Invite your friends and family</p>
+
+          <form action="{% url friends_contact %}" method="post" name="search" id="search">
+            <label class="break">Friend's E-mail:</label>{{iform.email}}{{iform.email.errors}}<br>
+            <label class="break">Friends Mobile:</label>{{iform.phone}}{{iform.phone.errors}}<br>
+			<label class="break">Message:</label>{{iform.message}}{{iform.message.errors}}<br>
+            <br>
+            <input name="submit" type="submit" class="button" id="submit" value="Invite" />
+          </form>
+        </div><br clear="all" />
+
+		{% if results %}
+		<div class="results_container">
+          <p>Search Results:</p>
+		 {% for result in results %}
+          <div class="results">
+            <div class="results_row">
+              <div class="results_pic">
+			  {% if result.get_profile.mugshot %} <img src='/site_media/{{result.get_profile.mugshot}}' alt='' width="74" height="53" >
+			  {% else %} <img src='/site_media/results.jpg ' alt=''>
+			  {% endif %}
+			  </div>
+
+              <div class="results_nick">
+			  {% if result.get_profile.is_temporary %}
+			   New User
+			  {% else %}
+			  <a href="{% url friends_show %}?friend={{ result.pk }}">{{result.username}}</a>
+			  {% endif %}
+			  </div>
+              
+			  <div class="results_location">
+                {{result.get_profile.address}}
+              </div>
+              <div class="results_interest">
+                {{result.get_profile.fish_method}}
+              </div>
+              
+			  <div class="results_view">
+                <form action="{% url friends_show %}" method='get'>
+                  <input type="hidden" name="friend" value="{{result.pk}}" />
+                  <input type="submit" class="button"  value="View" />
+                </form>
+              </div>
+			  
+              {% if profile.user.is_authenticated  %}
+			  <div class="results_view">
+                <form action="{% url friends_invite %}" method='get'>
+                  <input type="hidden" name="friend" value="{{result.pk}}" />
+                  <input type="submit" class="button"  value="Friend Request" />
+                </form>
+              </div>
+			  {% endif %}
+            </div>
+          </div>
+		  {% endfor %}
+        </div>
+		{% endif %}
+      </div>
+{% endblock %}
+

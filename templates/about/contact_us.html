@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block body_block %}
+<!-- InstanceBeginEditable name="content" -->
+<div id="bodyc">
+<div id="contactuswrapper">
+SpotBurn is the social network for fisherman developed by fisherman to help one another become better fisherman and spread the wealth of knowledge. Of course you can use
+it for hunting, hiking, camping or other outdoor activities where you want to share a great spot with your friends.
+Our goal was to make a site that is both fun and simple. If you like it, hate it, have ideas, or just want to talk about fishing, contact us and we will get back to you. Have fun! Pete Douma
+<br /><br />
+<div id="iframemap" align="right"><br /><img src="/site_media/office.jpg" width="250" height="138" alt="Office" /><br />
+<br /><span class="spot">SpotBurn</span><br /> 
+
+<a href="mailto:info@spotburn.com" class="list">info@spotburn.com</a><br /></div>
+<form name="Contact Us"  action="{% url contact_us %}" method="post" class="contactusform">
+	<label>Complete Name <span class="importantnotes">*</span></label><br />
+	{{ form.name }}{{form.name.errors}}<br/>
+	<label>E-Mail <span class="importantnotes">*</span></label><br />
+	{{ form.email }}{{form.email.errors}} <br/>
+	<label>Message <span class="importantnotes">*</span></label><br />
+	{{ form.text }}<br?>
+	<br /><br /><br />
+	<input name="send" type="submit" class="button" id="send" value="  Submit Form  " /><span class="cheat"></span>
+</form><br /><br />
+</div>
+</div>
+<!-- InstanceEndEditable -->
+{% endblock %}

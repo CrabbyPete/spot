@@ -1,0 +1,57 @@
+{% extends "mybase.html" %}
+
+{% load smartif %}
+{% block js %}
+{% endblock %}
+
+{% block mess_list %}
+    <div class="accept_container" id="bodyc">
+      <p>My Notices:</p>
+      {% for notice in notices %}
+	  <div class="accept">
+	    <div class="accept_row">
+	  {% ifequal notice.notice_type "join_request" %}
+		  <div class="accept_message">
+		  {{ notice }}
+		  </div>
+		  <div class="accept_interest">
+            {{notice.added}}
+          </div>
+      {% endifequal %}
+	  {% ifequal notice.notice_type "join_accept" %}
+          <div class="accept_pic">
+		    {{user.get_profile.mugshot}}
+		  </div>
+
+          <div class="accept_nick">
+            {{user.username}}
+          </div>
+
+          <div class="accept_location">
+            {{ notice }}
+          </div>
+
+          <div class="accept_interest">
+            {{notice.added}}
+          </div>
+          <div class="accept_view">
+			<form action ={% url notice_accept %} method='get'>
+				<input type="hidden" name="notice" value="{{notice.pk}}" />
+				<input type="submit" class="button" value="Accept" />
+			</form>
+          </div>
+		  {% endifequal %}
+		  {% ifequal notice.notice_type "join_accept" %}
+		 {% endifequal %}
+ 
+		  <div class="accept_delete">
+            <form action ={% url notice_delete %} method='get'>
+			  <input type="hidden" name="notice" value="{{notice.pk}}" />
+			  <input type="submit" class="button" value="Delete" />
+			</form>
+          </div>
+        </div>
+      </div>
+	  {% endfor %}
+    </div><!-- InstanceEndEditable -->
+{% endblock %}

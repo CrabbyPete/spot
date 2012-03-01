@@ -1,0 +1,98 @@
+{% extends "mybase.html" %}
+
+{% block mess_list %}
+	<span class="recentpost">Recent Posts</span><br>
+    <br>
+	
+	<div id="recentpostswrapper" class="justify">
+	<form action ="{% url base_message_delete %}" method = "post" >
+	{% for message in messages %} 
+	  <div class="{% cycle 'post_1' 'post_2' %}">
+        <div class="pic_user">
+          {% for photo in message.photos.all %}
+		  <img src="{{ photo.thumbnail.url }}">
+		  {% endfor %}
+        </div>
+
+        <div class="message_wrapper">
+		
+          <div class="message_seemore">
+            <a href="{% url base_message %}?message={{ message.pk}}" class="message_seemore">see more</a>
+          </div>
+
+          <div id="message_detail">
+            <div class="message_user">
+			  {% if profile.is_temporary %}
+			  {{ message.user.first_name }} {{message.user.last_name}}
+			  {% else %}
+              {{ message.user.username }}
+			  {% endif %}
+            </div>
+
+            <div class="message_date">
+              Posted at {{ message.date_added }}
+            </div>
+          </div><br clear="all">
+
+          <div class="message_message">
+            {{message.text}}
+          </div>
+        </div>
+		<div class = "message_delete">
+		  <label><input type="checkbox" name="message_delete" value="{{message.pk}}" /> Delete</label>
+		</div>
+      </div>
+      {% endfor %}
+	  <input type="submit" class = "button" name="delete" value="Delete Marked" /> 
+	  </form>
+    </div>
+
+{% endblock %}
+{% block profile %}
+    <div id="mypage_contentwrapper">
+		<div id="mypage_profile">
+		    {% if profile.mugshot %}
+			<img src='{{profile.mugshot}}' alt='' width="145" height="132">
+			{% else %}
+			<img src='/site_media/friend_nopic.jpg' alt='' width="170" height="170">
+			{% endif %}
+			<br>
+          </div>
+          <form action ="{% url base_editprofile %}" method = "post" enctype="multipart/form-data"> 
+		    <div id="mypage_editC">
+			  <label class="break">Upload Profile Picture:</label>
+			  {{form.mugshot}}{{ form.mugshot.errors }}
+              <label class="break">User Name:</label> 
+			  {{form.name}}{{ form.name.errors }}<br>
+              <label class="break">First Name:</label> 
+			  {{form.first_name}}{{ form.first_name.errors }}<br>
+              <label class="break">Last Name:</label> 
+			  {{form.last_name}}{{ form.last_name.errors }}<br>
+              <label class="break">E-mail:</label> 
+			  {{form.email}}{{ form.email.errors }}<br>
+              <label class="break">Password:</label> 
+			  {{form.password}}{{ form.password.errors }}<br>
+              <label class="break">Confirm Password:</label> 
+			  {{form.pass_confirm}}{{ form.pass_confirm.errors }}<br>
+              <label class="break">Mobile Phone Number:</label>
+			  {{form.mobile}}{{ form.mobile.errors }}<br>
+              <label class="break">Mobile Provider:</label> 
+			  {{form.carrier}}{{ form.carrier.errors }}<br>
+              <label class="break">Location:</label> 
+			  {{form.address}}{{ form.address.errors }}<br>
+              <label class="break">Birthday:</label> 
+			  {{form.birthday}}{{ form.birthday.errors }}<br>
+              <label class="break">Private Messages:</label> 
+			  {{form.is_private}}
+              Only my friends and groups can see my messages<br>
+			  <label class="break">Interests:</label>
+			  {{form.fish_method}}{{form.fish_method.errors}}
+              <label class="break">My Website:</label>
+			  {{form.web_site}}{{ form.web_site.errors }}<br />
+             <br />
+             <input type="submit" class = "button" name="accept"value="Accept" /> 
+			 <input type="submit" class = "button" name ="cancel" value="Cancel" />
+           </div>
+		  </form>
+        </div>
+{% endblock %}

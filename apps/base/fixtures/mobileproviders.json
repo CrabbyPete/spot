@@ -1,0 +1,119 @@
+[
+    {
+        "model" : "base.mobileprovider",
+        "pk" : "1",
+        "fields" : {
+            "title": "AT&T",
+            "domain": "mms.att.net",
+			"mms":1
+        }
+    },
+    {
+        "model" : "base.mobileprovider",
+        "pk" : "2",
+        "fields" : {
+            "title": "Sprint",
+            "domain": "pm.sprint.com",
+			"mms":0
+        }
+    },
+    {
+        "model" : "base.mobileprovider",
+        "pk" : "3",
+        "fields" : {
+            "title": "Verizon",
+            "domain": "vzwpix.com",
+			"mms":1
+        }
+    },
+    {
+        "model" : "base.mobileprovider",
+        "pk" : "4",
+        "fields" : {
+            "title": "T-Mobile",
+            "domain": "tmomail.net ",
+			"mms":1
+        }
+    },
+    {
+        "model" : "base.mobileprovider",
+        "pk" : "5",
+        "fields" : {
+            "title": "Virgin Mobile",
+            "domain": "vmobl.com",
+			"mms":1
+        }
+    },
+    {
+        "model" : "base.mobileprovider",
+        "pk" : "6",
+        "fields" : {
+            "title": "Alltel",
+            "domain": "message.alltel.com",
+			"mms":1
+        }
+    },
+    {
+        "model" : "base.mobileprovider",
+        "pk" : "7",
+        "fields" : {
+            "title": "Nextel",
+            "domain": "messaging.nextel.com",
+			"mms":0
+        }
+    },
+    {
+        "model" : "base.mobileprovider",
+        "pk" : "8",
+        "fields" : {
+            "title": "VoiceStream",
+            "domain": "voicestream.net",
+			"mms":0
+        }
+    },
+    {
+        "model" : "base.mobileprovider",
+        "pk" : "9",
+        "fields" : {
+            "title": "SunCom",
+            "domain": "tms.suncom.com",
+			"mms":1
+        }
+    },
+	{
+        "model" : "base.mobileprovider",
+        "pk" : "10",
+        "fields" : {
+            "title": "Amp'd Mobile",
+            "domain": "vtext.com",
+			"mms":1
+        }
+    },
+	{
+        "model" : "base.mobileprovider",
+        "pk" : "11",
+        "fields" : {
+            "title": "Boost Mobile",
+            "domain": "myboostmobile.com",
+			"mms":1
+        }
+    },
+	{
+        "model" : "base.mobileprovider",
+        "pk" : "12",
+        "fields" : {
+            "title": "Einstein PCS",
+            "domain": "einsteinmms.com",
+			"mms":1
+        }
+    },
+	{
+        "model" : "base.mobileprovider",
+        "pk" : "12",
+        "fields" : {
+            "title": "US Cellular",
+            "domain": "mms.uscc.net",
+			"mms":1
+        }
+    }
+]

@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block js %}
+<script src="http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php" type="text/javascript"></script>
+{% endblock %}
+
+
+{% block mess_list %}
+    <div id="bodyc">
+      <span class="welcome">Welcome to <span class="spot">SpotBurn!</span></span>
+	  <br />
+	  <br />
+      To signup, please complete the registration form below. Note that full site features are only avaliable to registered users.<br />
+      <br />
+      <div id="signupform">
+        <form action="{% url base_signup %}" method="post" class="sup" id="sign" title="Join SpotBurn" name="sign">
+          <label>Username: </label>{{ form.name }}{{ form.name.errors }}<br />
+          <br />
+          <label>Phone: </label>{{ form.mobile }} Carrier: {{ form.carrier }}{{ form.mobile.errors }}<br />
+          <br />
+          <label>E-mail: </label>{{ form.email}}{{ form.email.errors }}<br><br>
+          <label><span class="important">*</span> Password: </label>{{ form.password }}{{ form.password.errors }}<br />
+		  <br />
+          <label><span class="important">*</span> Password Confimation: </label>{{ form.pass_confirm }}{{ form.pass_confirm.errors}}<br />
+		  <br />
+          <label>First Name: </label>{{ form.first_name }} {{ form.first_name.errors }}<br />
+          <br />
+          <label>Last Name: </label>{{ form.last_name}}{{ form.last_name.errors}}<br />
+          <br />
+          <label>Location: </label>{{ form.address }}{{ form.address.errors }}<br />
+          <br />
+          <br />
+          <!--  
+		  {{ form.facebook }}<span class="formmargins2">Sync with this account with <img src="/site_media/facebook.png" alt="Facebook"/><br /></span> 
+          -->
+          <br />
+		  {{ form.agree }}{{ form.agree.errors }}<span class="formmargins">I agree to the 
+		  <a href="{% url terms %}" class="important" target="_blank">Terms of Use</a> and <a href="{% url privacy %}" class="important" target="_blank">Privacy Policy</a>.</span><br />
+          <br />
+          <!--  
+          {{ form.newsletter }}{{ form.newsletter.errors }}<span class="formmargins1">Keep me posted on news and updates related to<br />
+          SpotBurn's products and services.</span>
+		  <br />
+		  -->
+          <br />
+          <input  type="submit" value="Create Account" class="button" /><br />
+          <span class="important">* Required Field</span>
+        </form>
+      </div>
+
+      <div id="loginbox">
+        Already have an account? Login here using your Email, Mobile or Username:<br />
+        <form action="{% url base_signin %}" method="post" name="login" id="login">
+          <label class="formmarginslogin">E <span class="supf">/</span> M <span class="supf">/</span> U:</label>{{ lform.username }}{{ lform.errors.username }}<br />
+          <label class="formmarginslogin1">Password:</label>{{ lform.password }}{{lform.errors.password}}<br />
+          <br />
+          <a href="#" class="passwordforgot">Forgot your Password?</a><input name="log_in" type="submit" value="Login" class="loginbutton" />
+        </form>
+		<div><fb:login-button></fb:login-button></div>
+      </div>
+    </div><!-- InstanceEndEditable -->
+{% endblock %}

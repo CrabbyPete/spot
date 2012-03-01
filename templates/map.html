@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Spotburn Popup Map</title>
+<style type="text/css">
+#map { height:400px; text-align:left; width:400px; float:right }
+</style>
+
+<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key="ABQIAAAAw6ArS1eE_K0sprwtT178ZhSszzQBrvuXuJup0ZrfApALDIflmxRS66rHOHcb2Zrc61i3DyxE0gAbhA" type="text/javascript">
+</script>
+
+<script type="text/javascript">
+var map;
+
+function showLatLong( latitude, longitude ) {
+	mp = document.getElementById("map")
+    map = new GMap2(mp);
+    map.addControl(new GSmallMapControl());
+    map.addControl(new GMapTypeControl());
+
+    var point = new GLatLng(latitude, longitude);
+    map.setCenter(point, 14);
+	marker = new GMarker(point, {draggable: true});
+	map.addOverlay(marker);
+}
+</script>
+</head>
+
+<body onload="showLatLong( {{latitude}}, {{longitude}} )">
+		<div id="map" style="float:left">
+			<!-- Map goes here -->
+		</div>
+</body>

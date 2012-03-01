@@ -1,0 +1,25 @@
+
+
+.hoverbox
+{
+}
+
+.hoverbox a
+{
+}
+
+.hoverbox a .preview
+{
+	display: none;
+}
+
+.hoverbox a:hover .preview
+{
+	display: block;
+	position: absolute;
+	z-index: 1;
+}
+
+.hoverbox .preview
+{
+}
