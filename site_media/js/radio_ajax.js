@@ -40,9 +40,9 @@ function radioRequest(form, el) {
 
 function whatButton(form) {
 	var local;
-	for (var i = 0; i < form.radiobutton.length; i++) {
-		if(form.radiobutton[i].checked) {
-		    local = form.radiobutton[i].value;
+	for (var i = 0; i < form.elements.length; i++) {
+		if(form.elements[i].checked) {
+		    local = form.elements[i].value;
             break;
         }
 	}

@@ -143,8 +143,8 @@
             {% for friend in friends %}
             <div class="mypage_myfriendsC">
               <div class="mypage_myfriendsP">
-                {% if friend.friend.spotuser_set.get.mugshot %} 
-				<img src="/site_media/{{friend.friend.spotuser_set.get.mugshot}}" width="40" height="40" />
+                {% if friend.friend.get_profile.mugshot %} 
+				<img src="{{friend.friend.get_profile.mugshot}}" width="40" height="40" />
 			    {% else %} 
 				<img src="/site_media/img/friend_nopic.jpg" width="40" height="40">
 			    {% endif %}
@@ -158,11 +158,11 @@
 				    <div class=tootipcontent>
 				      <form>
 						<label>E-mail</label>
-						<input class="spacer" name="radio{{friend.friend.pk}}"  type="radio" value="email" onclick="radioRequest(this.form,'tip{{friend.friend.pk}}')" {% ifequal friend.follow 'email' %}  checked="true" {% endifequal %}/>
+						<input class="spacer" name="radio{{friend.friend.pk}}"  type="radio" value="email" onclick="radioRequest(this.form,'tip{{friend.friend.pk}}')" {% if friend.follow == 'email' %}  checked="true" {% endif %}/>
 						<label>Phone</label>
-						<input  class="spacer" name="radio{{friend.friend.pk}}" type="radio" value="phone" onclick="radioRequest(this.form,'tip{{friend.friend.pk}}')" {% ifequal friend.follow 'phone' %}  checked="true"{% endifequal %}/>
+						<input  class="spacer" name="radio{{friend.friend.pk}}" type="radio" value="phone" onclick="radioRequest(this.form,'tip{{friend.friend.pk}}')" {% if friend.follow == 'phone' %}  checked="true"{% endif %}/>
 						<label>None</label>
-						<input  class="spacer" name="radio{{friend.friend.pk}}" type="radio" value="None"  onclick="radioRequest(this.form,'tip{{friend.friend.pk}}')" {% ifequal friend.follow 'None' %}   checked="true"{% endifequal %}/>						
+						<input  class="spacer" name="radio{{friend.friend.pk}}" type="radio" value="None"  onclick="radioRequest(this.form,'tip{{friend.friend.pk}}')" {% if friend.follow == 'None' %}   checked="true"{% endif %}/>						
 						<input name = "who" type = "hidden", value = "friend" />
 						<input name = "follow" type = "hidden", value = "{{friend.friend.pk}}" />
 				      </form>

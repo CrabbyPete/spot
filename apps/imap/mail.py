@@ -4,7 +4,7 @@ import settings
 import pdb
 import os, sys, time, re
 
-from os.path                    import join
+from os.path                    import join, split
 from PIL                        import Image
 
 
@@ -44,7 +44,7 @@ def cronjob(job):
     
     print 'Mailing @' + time.strftime("%I:%M:%S %p", time.localtime()) 
     
-    qry = User.objects.filter(username = 'Pete_Douma')# make this ()
+    qry = User.objects.filter(username = 'CrabbyPete')# make this ()
     spam = []
  
     # Send email to every user
@@ -69,7 +69,10 @@ def cronjob(job):
   
         msg = EmailMultiAlternatives("How's the fishing?", text, EMAIL, spam )
         msg.attach_alternative(html, "text/html")
-        msg.send(fail_silently = True)
+        try:
+            msg.send(fail_silently = False)
+        except Exception, e:
+            print 'Email error: %s'%e
 
     return
         
@@ -81,6 +84,7 @@ def main():
     
     # Set the cron job to send mail every week Mon at 12:00AM
     cron = pycron(latency = 30)
+    #cron.add_job('* 0 0 0 0 0', 'anyfish')
     cron.add_job('0 0 0 * * *', 'anyfish')
     
 
@@ -91,8 +95,8 @@ def main():
         mail_msgs = mailbox.new_messages()
         if len(mail_msgs) == 0:
             mailbox.kill()
-            time.sleep(30)
-            cronjob( cron.get_matched_jobs())
+            time.sleep(20)
+            cronjob( cron.get_matched_jobs() )
             continue
 
         # Get each message
@@ -146,6 +150,9 @@ def main():
             
             if text:
                 if isinstance(text, list):
+                    if isinstance(text[0],list):
+                        text = text[0]
+                        
                     text = ' '.join(text)
  
                 # Dump the reply part of the message

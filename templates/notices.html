@@ -12,9 +12,9 @@
 	    <div class="accept_row">
           <div class="accept_pic">
 		    {% if notice.sent_by.get_profile.mugshot %}
-			<img src='/site_media/{{notice.sent_by.get_profile.mugshot}}' alt='/site_media/results.jpg'  width=74 height=53 \>
+			<img src='{{notice.sent_by.get_profile.mugshot}}' width=74 height=53 \>
 			{% else %}
-			<img src='/site_media/results.jpg' alt='' \>
+			<img src='/site_media/img/results.jpg' alt='' \>
 			{% endif %}
 		  </div>
 
