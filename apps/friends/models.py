@@ -132,7 +132,7 @@ class JoinInvitationManager(models.Manager):
         salt = sha_constructor(str(random())).hexdigest()[:5]
         confirmation_key = sha_constructor(salt + to_email).hexdigest()
         url = reverse("base_signup")
-        accept_url = u"http://spotburn.com%s" %  url
+        accept_url = settings.SITE_BASE + url
 
         subject = "An Invitation To Join SpotBurn.com"
 

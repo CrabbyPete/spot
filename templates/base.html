@@ -39,6 +39,9 @@
 					<ul>
 						<li><a href="{% url homepage %}" 		title="Home"   {% if request.path == "/" %}      			class="active"{% endif %} >Home</a></li>
 						<li><a href="{% url about %}"    		title="About"  {% if request.path == "/about/" %} 			class="active"{% endif %} >About</a></li>
+						<!--  
+						<li><a href="{% url friends_search %}"  title="Search" {% if request.path == "/friends/search/" %}  class="active"{% endif %} >Search</a></li>
+						-->
 						{% if request.user.is_authenticated %}
 						<li><a href="{% url base_my_page %}" 	title="My Page" {% if request.path == "/base/mypage/" or request.path == "/base/signin/" %} class="active" {% endif %}>My&nbsp;Page</a></li>
 						<li><a href="{% url base_logout %}" 	title="Log Out">Log Out</a> </li>

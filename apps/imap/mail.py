@@ -63,7 +63,7 @@ def cronjob(job):
             spam.append(profile.proxy_email)
 
         # Personalize text and html version with first name
-        c = Context({'name':name})
+        c = Context({'name':name, 'url':settings.SITE_BASE})
         text = loader.get_template('anyfish.txt').render(c)
         html = loader.get_template('anyfish.html').render(c)
   
@@ -76,7 +76,7 @@ def cronjob(job):
 
     return
         
-        
+PHOTO_TYPES = ['jpg,png,gif']      
 def main():
     # Get the mail
     mailbox = MailBox()
@@ -95,7 +95,7 @@ def main():
         mail_msgs = mailbox.new_messages()
         if len(mail_msgs) == 0:
             mailbox.kill()
-            time.sleep(20)
+            time.sleep(30)
             cronjob( cron.get_matched_jobs() )
             continue
 
@@ -173,10 +173,13 @@ def main():
                     photo.set_exif()
 
                     # Resize the image and convert to jpeg
-                    ms = Image.open(m)
-                    size = 400,400
-                    ms.thumbnail(size, Image.ANTIALIAS)
-                    ms.save(m, "JPEG")
+                    name,img_type = title.split('.')
+                    if img_type in PHOTO_TYPES:
+                        ms = Image.open(m)
+                        size = 400,400
+                        ms.thumbnail(size, Image.ANTIALIAS)
+                        #ms.save(m, "JPEG")
+                        ms.save(m)
 
                     try:
                         photo.save()
@@ -229,7 +232,8 @@ def main():
 
             # Send email to everyone who is following this one
             if len(send_to) > 0:
-                mail_to('SpotBurn Alert',text, EMAIL ,send_to, media)
+                subject = 'SpotBurn Message From %s %s'%( usr.first_name, usr.last_name )
+                mail_to('SpotBurn Message From',text, EMAIL ,send_to, media)
 
             # Done with this email delete it
             mailbox.mark_deleted(msg)

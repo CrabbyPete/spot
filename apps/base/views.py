@@ -891,7 +891,10 @@ def add_post(request):
     
     return my_page(request)       
  
-  
+def rotate(request):
+    pass
+    
+    
  # This is the logout for a user   
 from django.contrib.auth import logout
 def goodbye(request):

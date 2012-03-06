@@ -103,6 +103,7 @@
 			<p class="seeMoreTxt2">{{photo.caption}}</p>
 			{% if profile.user == message.user and edit %}
 				<label><input type="checkbox" name="photo_delete" value="{{photo.pk}}" />     Delete Photo</label>
+
 			{% endif %}
           </div>
 		  {% endfor %}
@@ -152,7 +153,7 @@
 				<div class="commentDate">
                   <p class="dateTxt"> {{comment.submit_date|date:" M d, Y  fa"}}</p>
 				  {% if profile.user == message.user and edit %}
-                  <p class="reply" ><input type="checkbox" name="comment_delete" value="{{comment.pk}}" /> Delete</p>
+                  <p>&nbsp;&nbsp;<input type="checkbox" name="comment_delete" value="{{comment.pk}}" />&nbsp;Delete Comment</p>
 				  {% endif %}
                 </div>
               </div>
