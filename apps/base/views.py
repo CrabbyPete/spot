@@ -625,6 +625,10 @@ def message(request):
                 for photo in request.POST.getlist('photo_delete'):
                     p = SpotPhoto.objects.get(pk=photo)
             
+            if 'photo_rotate' in request.POST:
+                for photo in request.POST.getlist('photo_rotate'):
+                    p = SpotPhoto.objects.get(pk=photo)
+            
             # Save the new message
             message.save()
             return homepage(request)

@@ -103,6 +103,7 @@
 			<p class="seeMoreTxt2">{{photo.caption}}</p>
 			{% if profile.user == message.user and edit %}
 				<label><input type="checkbox" name="photo_delete" value="{{photo.pk}}" />     Delete Photo</label>
+				<label><input type="checkbox" name="photo_rotate" value="{{photo.pk}}" />     Rotate Photo</label>
 
 			{% endif %}
           </div>
