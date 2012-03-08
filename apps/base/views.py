@@ -628,10 +628,19 @@ def message(request):
             if 'photo_rotate' in request.POST:
                 for photo in request.POST.getlist('photo_rotate'):
                     p = SpotPhoto.objects.get(pk=photo)
+                    fp = open(p.image.path,'r+b')
+                    img = Image.open(fp)
+                    img = img.transpose(Image.ROTATE_270)
+                    img.save(p.image.path)
+                    
+                    fp = open(p.thumbnail.path, 'r+b')
+                    tmb = Image.open(fp)
+                    tmb = tmb.transpose(Image.ROTATE_270)
+                    tmb.save(p.thumbnail.path)
             
             # Save the new message
             message.save()
-            return homepage(request)
+            return HttpResponseRedirect( reverse('homepage'))
 
     # Show message details from the list first time displaying form.
     if request.GET:
@@ -749,7 +758,7 @@ def add_comment(request):
                     comment.photos.add(photo)
                     comment.save()
 
-    return homepage(request)
+    return HttpResponseRedirect( reverse('homepage'))
 
 def delete_comment(request):
     if "comment_delete" in request.GET:
