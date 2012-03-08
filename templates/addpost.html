@@ -5,7 +5,7 @@
 {% block js %}
 <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key="ABQIAAAAw6ArS1eE_K0sprwtT178ZhSszzQBrvuXuJup0ZrfApALDIflmxRS66rHOHcb2Zrc61i3DyxE0gAbhA" type="text/javascript">
 </script>
-<script type="text/javascript" src="/site_media/gmap.js"></script>
+<script type="text/javascript" src="/site_media/js/gmap.js"></script>
 {% endblock %}
 
 {% block mess_list %}
@@ -17,9 +17,9 @@
         <div class="mid">
 		<p> Remember: You can post a report by sending an email from your computer or phone to <a href="mailto:fish@coastalflyrodders.com"><i>fish@coastalflyrodders.com</i> </a> For private groups put the group name in the subject line </p> 
 		{% if profile.address %}
-		<img src="/site_media/blank.gif" onload="showAddress( '{{profile.address}}' )" />
+		<img src="/site_media/img/blank.gif" onload="showAddress( '{{profile.address}}' )" />
 		{% else %}
-		<img src="/site_media/blank.gif" onload="showAddress( 'United States' )" />
+		<img src="/site_media/img/blank.gif" onload="showAddress( 'United States' )" />
 		{% endif %}
 		
         <!--left start -->
