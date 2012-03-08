@@ -51,12 +51,11 @@ var friendFollow = new Class({
 	},
 });
 
-/**
-
 
 function radioComplete( response ) {
 	var x = response;
 }
+
 function radioRequest(form, el) {
 	var xhr = new Request (
 			{
@@ -82,7 +81,7 @@ function radioRequest(form, el) {
 
 function whatButton(form) {
 	var local;
-	for (var i = 0; i < form.radiobutton.length; i++) {
+	for (var i = 0; i < form.elements.length; i++) {
 		if(form.radiobutton[i].checked) {
 		    local = form.radiobutton[i].value;
             break;
@@ -93,4 +92,3 @@ function whatButton(form) {
 
    return qstr;
 }
-**/

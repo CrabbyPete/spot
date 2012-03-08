@@ -722,7 +722,7 @@ def add_comment(request):
         html = t.render(c)
         return HttpResponse(html)
 
-    elif (request.POST):
+    elif request.method == 'POST':
         form = CommentForm(request.POST)
         if form.is_valid():
             comment = SpotComment()
@@ -749,6 +749,7 @@ def add_comment(request):
                     comment.longitude = local['longitude']
                 
             comment.save()
+            message.save()
                
             # Pictures are many to many save comment first
             if 'picture' in request.FILES:
