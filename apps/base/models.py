@@ -257,7 +257,12 @@ class SpotPhoto(models.Model):
 
         # See if GPS data is available and if so convert to decimal for Google Map
         self. longitude, self.latitude = get_GPS(data)
-        return True
+        
+        # Check orientation
+        if data.has_key( 'Orientation' ):
+            return data['Orientation']
+        else:
+            return 0
 
 
 class SpotMessageManager(models.Manager):

@@ -76,6 +76,30 @@ def cronjob(job):
 
     return
         
+
+def email_parts(mailbox, msg_num):
+    """
+    Get the message, text,html,and media
+    """
+    text,html  = mailbox.get_text(msg_num)
+    
+    tag,domain = em.split('@')
+    media = mailbox.get_media( msg_num, prefix = tag+'-',  path = PHOTOS )
+    
+    if text:
+        if isinstance(text, list):
+            if isinstance(text[0],list):
+                text = text[0]
+                        
+            text = ' '.join(text)
+ 
+            # Dump the reply part of the message
+            if '----- Original Message -----' in text:
+                text,dmp = text.split('----- Original Message -----')
+ 
+    return text,html,media
+
+
 PHOTO_TYPES = ['jpg,png,gif']      
 def main():
     # Get the mail
@@ -109,20 +133,13 @@ def main():
                 # Done with this email delete it
                 mailbox.mark_deleted(msg)
                 continue
-
+   
             # See if this is a phone number
             pn = re_mobile.search(em)
             if pn != None:
                 pn = pn.group(0)
-
-            # Get the messages and pictures
-            text,html  = mailbox.get_text(msg_num)
-            tag,domain = em.split('@')
-
-            media = mailbox.get_media(msg_num,prefix = tag+'-', path = PHOTOS )
-
-            # Now look up sender in the database and add the message
-            if pn != None:
+            
+                # Now look up sender in the database and add the message
                 try:
                     profile = SpotUser.objects.get( mobile = pn )
                 except Exception:
@@ -130,6 +147,7 @@ def main():
                 else:
                     usr = profile.user
                 
+            # No its just a regular email address
             elif em != None:
                 try:
                     usr = User.objects.get( email = em )
@@ -146,39 +164,47 @@ def main():
 
             # Save the text part of the message Decode quoted printable characters
             message = SpotMessage( user = usr )
-            message.save()
-            
+    
+            # Get the message parts
+            text, html, media = email_parts( mailbox, msg_num )
             if text:
-                if isinstance(text, list):
-                    if isinstance(text[0],list):
-                        text = text[0]
-                        
-                    text = ' '.join(text)
- 
-                # Dump the reply part of the message
-                if '----- Original Message -----' in text:
-                    text,dmp = text.split('----- Original Message -----')
- 
                 message.text = text
             message.save()
 
             # Save each image, with this message.
-            if media != None:
+            if media:
                 for m in media:
                     
                     # Just get the file name and the relative url
                     path, title = split(m)
                     path = join('photos//',title)
                     photo = SpotPhoto( image = path, title = title )
-                    photo.set_exif()
+                    
+                    # Get the exif data before you adjust the photo
+                    rotate = photo.set_exif()
 
                     # Resize the image and convert to jpeg
-                    name,img_type = title.split('.')
+                    name = title.split('.')
+                    img_type = name[-1].lower()
                     if img_type in PHOTO_TYPES:
                         ms = Image.open(m)
                         size = 400,400
                         ms.thumbnail(size, Image.ANTIALIAS)
-                        #ms.save(m, "JPEG")
+                        """
+                        1: 'Horizontal (normal)',
+                        2: 'Mirrored horizontal',
+                        3: 'Rotated 180',
+                        4: 'Mirrored vertical',
+                        5: 'Mirrored horizontal then rotated 90 CCW',
+                        6: 'Rotated 90 CW',
+                        7: 'Mirrored horizontal then rotated 90 CW',
+                        8: 'Rotated 90 CCW'}),
+                        """
+                        if rotate != 1:
+                            if rotate == 6:
+                                ms.transpose(Image.ROTATE_270)
+                            elif rotate == 3:
+                                ms.tranpose(Image.ROTATE_180) 
                         ms.save(m)
 
                     try:
@@ -233,7 +259,7 @@ def main():
             # Send email to everyone who is following this one
             if len(send_to) > 0:
                 subject = 'SpotBurn Message From %s %s'%( usr.first_name, usr.last_name )
-                mail_to('SpotBurn Message From',text, EMAIL ,send_to, media)
+                mail_to( subject, text, EMAIL ,send_to, media )
 
             # Done with this email delete it
             mailbox.mark_deleted(msg)
