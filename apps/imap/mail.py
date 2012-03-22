@@ -100,7 +100,7 @@ def email_parts( mailbox, msg_num, em ):
     return text,html,media
 
 
-PHOTO_TYPES = ['jpg,png,gif']      
+PHOTO_TYPES = ['jpg','png','gif']      
 def main():
     # Get the mail
     mailbox = MailBox()
@@ -200,10 +200,10 @@ def main():
                         7: 'Mirrored horizontal then rotated 90 CW',
                         8: 'Rotated 90 CCW'}),
                         """
-                        if rotate != 1:
-                            if rotate == 6:
+                        if rotate != 0:
+                            if '90 CCW' in rotate:
                                 ms.transpose(Image.ROTATE_270)
-                            elif rotate == 3:
+                            elif '180' in rotate:
                                 ms.tranpose(Image.ROTATE_180) 
                         ms.save(m)
 

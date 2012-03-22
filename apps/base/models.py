@@ -260,9 +260,11 @@ class SpotPhoto(models.Model):
         
         # Check orientation
         if data.has_key( 'Image Orientation' ):
-            return data['Image Orientation']
-        else:
-            return 0
+            orient = data['Image Orientation']
+            if orient.printable:
+                return orient.values
+            
+        return 0
 
 
 class SpotMessageManager(models.Manager):
