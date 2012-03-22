@@ -77,7 +77,7 @@ def cronjob(job):
     return
         
 
-def email_parts(mailbox, msg_num):
+def email_parts( mailbox, msg_num, em ):
     """
     Get the message, text,html,and media
     """
@@ -166,7 +166,7 @@ def main():
             message = SpotMessage( user = usr )
     
             # Get the message parts
-            text, html, media = email_parts( mailbox, msg_num )
+            text, html, media = email_parts( mailbox, msg_num, em )
             if text:
                 message.text = text
             message.save()
