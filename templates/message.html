@@ -163,7 +163,9 @@
 			{% if profile.user == message.user and edit %}
 			  <input type="submit" class="bigbutton" value="Delete Checked Comments" />
 			{% endif %}
+			{% if user.is_authenticated %}
             <p class="leaveComment"><a href="{% url base_add_comment %}?message={{ message.pk}}&TB_iframe=true&height=560&width=720" class="smoothbox" title="">Leave a Comment</a></p>
+          	{% endif %}
           </div>
         </div><!--right end -->
 

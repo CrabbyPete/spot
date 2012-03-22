@@ -259,8 +259,8 @@ class SpotPhoto(models.Model):
         self. longitude, self.latitude = get_GPS(data)
         
         # Check orientation
-        if data.has_key( 'Orientation' ):
-            return data['Orientation']
+        if data.has_key( 'Image Orientation' ):
+            return data['Image Orientation']
         else:
             return 0
 
