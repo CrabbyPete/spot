@@ -262,7 +262,7 @@ class SpotPhoto(models.Model):
         if data.has_key( 'Image Orientation' ):
             orient = data['Image Orientation']
             if orient.printable:
-                return orient.values
+                return orient.__str__()
             
         return 0
 

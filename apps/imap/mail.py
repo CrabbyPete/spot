@@ -173,10 +173,10 @@ def main():
 
             # Save each image, with this message.
             if media:
-                for m in media:
+                for img in media:
                     
                     # Just get the file name and the relative url
-                    path, title = split(m)
+                    path, title = split(img)
                     path = join('photos//',title)
                     photo = SpotPhoto( image = path, title = title )
                     
@@ -187,10 +187,8 @@ def main():
                     name = title.split('.')
                     img_type = name[-1].lower()
                     if img_type in PHOTO_TYPES:
-                        ms = Image.open(m)
-                        size = 400,400
-                        ms.thumbnail(size, Image.ANTIALIAS)
-                        """
+                        ms = Image.open(img)
+                        """ Check Orientation
                         1: 'Horizontal (normal)',
                         2: 'Mirrored horizontal',
                         3: 'Rotated 180',
@@ -201,11 +199,17 @@ def main():
                         8: 'Rotated 90 CCW'}),
                         """
                         if rotate != 0:
-                            if '90 CCW' in rotate:
-                                ms.transpose(Image.ROTATE_270)
+                            if '90' in rotate:
+                                if 'CW' in rotate:
+                                    ms = ms.rotate(270)
+                                elif 'CCW' in rotate:
+                                    ms = ms.rotate(90)
                             elif '180' in rotate:
-                                ms.tranpose(Image.ROTATE_180) 
-                        ms.save(m)
+                                ms = ms.rotate(180) 
+                        
+                        size = 400,400
+                        ms.thumbnail(size, Image.ANTIALIAS)
+                        ms.save(img)
 
                     try:
                         photo.save()
