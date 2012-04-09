@@ -10,8 +10,6 @@ urlpatterns = patterns('',
     (r'^about/',        include('about.urls') 	       ),
 	(r'^friends/',      include('friends.urls')        ),
 	(r'^notification/', include('notification.urls')   ),
-    (r'^robots\.txt$',  direct_to_template, {'template': 'robots.txt', 'mimetype': 'text/plain'}),
-    
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')   ),
     url(r'^admin/',     include(admin.site.urls)                   ),
 

@@ -24,7 +24,11 @@ class MailBox(imaplib.IMAP4):
         return self.mailbox.login(user, password)
 
     def new_messages(self):
-        self.mailbox.select("INBOX")
+        try:
+            self.mailbox.select("INBOX")
+        except:
+            return None
+        
         ok, mess = self.mailbox.search(None, "UNDELETED")
         if ok == 'OK':
             mess = mess[0].split()

@@ -4,9 +4,11 @@ import settings
 import pdb
 import os, sys, time, re
 
+import logging
+logger = logging.getLogger('django.request')
+
 from os.path                    import join, split
 from PIL                        import Image
-
 
 EMAIL  = 'fish@coastalflyrodders.com'
 PHOTOS = join(settings.MEDIA_ROOT, 'photos/')
