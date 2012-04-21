@@ -29,7 +29,11 @@ class MailBox(imaplib.IMAP4):
         except:
             return None
         
-        ok, mess = self.mailbox.search(None, "UNDELETED")
+        try:
+            ok, mess = self.mailbox.search(None, "UNDELETED")
+        except IMAP4.error:
+            return None
+        
         if ok == 'OK':
             mess = mess[0].split()
             return mess
@@ -37,7 +41,12 @@ class MailBox(imaplib.IMAP4):
             return None
 
     def fetch(self, number):
-        ok, data = self.mailbox.fetch(number,'(RFC822)')
+        try:
+            ok, data = self.mailbox.fetch(number,'(RFC822)')
+        except IMAP4.error,e:
+            print str(e)
+            return None
+        
         if ok =='OK':
             mess = data[0][1]
             mess = email.message_from_string(mess)
@@ -70,14 +79,24 @@ class MailBox(imaplib.IMAP4):
         return head, sender, subj
 
     def mark_deleted(self,number):
-        ok, data  = self.mailbox.store(number, 'FLAGS', '(\Deleted)')
+        try:
+            ok, data  = self.mailbox.store(number, 'FLAGS', '(\Deleted)')
+        except IMAP4.error, e:
+            print str(e)
+            return None
+        
         if ok != 'OK':
             return False
         else:
             return True
 
     def kill(self):
-        ok, data = self.mailbox.expunge()
+        try:
+            ok, data = self.mailbox.expunge()
+        except IMAP4.error,e:
+            print str(e)
+            return False
+        
         if ok != 'OK':
             return False
         return True
