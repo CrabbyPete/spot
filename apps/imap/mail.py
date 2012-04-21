@@ -74,7 +74,7 @@ def cronjob(job):
         try:
             msg.send(fail_silently = False)
         except Exception, e:
-            print 'Email error: %s'%e
+            print 'Email error: %s'% str(e)
 
     return
         
@@ -216,13 +216,13 @@ def main():
                     try:
                         photo.save()
                     except Exception, e:
-                        print 'Photo %s failed to save because %s'%(title,e)
+                        print 'Photo %s failed to save because %s'%(title,str(e))
                     else:
                         message.photos.add(photo)
                         try:
                             message.save()
                         except Exception,e:
-                            print 'Photo %s failed to save to message because %s'%(title,e)
+                            print 'Photo %s failed to save to message because %s'%(title,str(e))
 					
     
             # Check if this is a group message
