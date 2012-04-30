@@ -26,12 +26,14 @@ class MailBox(imaplib.IMAP4):
     def new_messages(self):
         try:
             self.mailbox.select("INBOX")
-        except:
+        except Exception, e:
+            print str(e)
             return None
         
         try:
             ok, mess = self.mailbox.search(None, "UNDELETED")
-        except IMAP4.error:
+        except IMAP4.error, e:
+            print str(e)
             return None
         
         if ok == 'OK':
