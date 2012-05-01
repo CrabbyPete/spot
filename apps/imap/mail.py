@@ -119,7 +119,7 @@ def main():
 
         # Gets the mail list: If nothing there quit in order to clean up
         mail_msgs = mailbox.new_messages()
-        if len(mail_msgs) == 0:
+        if mail_msgs and len(mail_msgs) == 0:
             mailbox.kill()
             time.sleep(30)
             cronjob( cron.get_matched_jobs() )
