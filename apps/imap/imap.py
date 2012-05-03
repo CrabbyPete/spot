@@ -3,6 +3,9 @@ import imaplib
 import email
 
 import os.path
+import logging
+logger = logging.getLogger('django.request')
+
 
 from password       import gen
 from decodeh        import decode_heuristically
@@ -23,17 +26,21 @@ class MailBox(imaplib.IMAP4):
     def login(self, user='', password=''):
         return self.mailbox.login(user, password)
 
+    def handle_error(self, error):
+        print err
+        logger.error(error)
+        
     def new_messages(self):
         try:
             self.mailbox.select("INBOX")
         except Exception, e:
-            print str(e)
+            self.handle_error(str(e))
             return None
         
         try:
             ok, mess = self.mailbox.search(None, "UNDELETED")
-        except IMAP4.error, e:
-            print str(e)
+        except Exception, e:
+            self.handle_error(str(e))
             return None
         
         if ok == 'OK':
@@ -45,8 +52,8 @@ class MailBox(imaplib.IMAP4):
     def fetch(self, number):
         try:
             ok, data = self.mailbox.fetch(number,'(RFC822)')
-        except IMAP4.error,e:
-            print str(e)
+        except Exception, e:
+            self.handle_error(str(e))
             return None
         
         if ok =='OK':
@@ -83,8 +90,8 @@ class MailBox(imaplib.IMAP4):
     def mark_deleted(self,number):
         try:
             ok, data  = self.mailbox.store(number, 'FLAGS', '(\Deleted)')
-        except IMAP4.error, e:
-            print str(e)
+        except Exception, e:
+            self.handle_error(str(e))
             return None
         
         if ok != 'OK':
@@ -95,8 +102,8 @@ class MailBox(imaplib.IMAP4):
     def kill(self):
         try:
             ok, data = self.mailbox.expunge()
-        except IMAP4.error,e:
-            print str(e)
+        except Exception,e:
+            self.handle_error(str(e))
             return False
         
         if ok != 'OK':
