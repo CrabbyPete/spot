@@ -27,7 +27,7 @@ class MailBox(imaplib.IMAP4):
         return self.mailbox.login(user, password)
 
     def handle_error(self, error):
-        print err
+        print error
         logger.error(error)
         
     def new_messages(self):
