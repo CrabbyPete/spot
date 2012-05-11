@@ -119,13 +119,15 @@ def main():
 
         # Gets the mail list: If nothing there quit in order to clean up
         mail_msgs = mailbox.new_messages()
-        if mail_msgs and len(mail_msgs) == 0:
+        if not mail_msgs or len(mail_msgs) == 0:
             mailbox.kill()
             time.sleep(30)
             cronjob( cron.get_matched_jobs() )
             continue
 
         # Get each message
+        
+        
         for msg in mail_msgs:
             msg_num = mailbox.fetch(msg)
             em, sentby, group = mailbox.header(msg_num)
