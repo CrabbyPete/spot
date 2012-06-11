@@ -159,6 +159,7 @@ def main():
                 
             # No its just a regular email address
             elif em != None:
+                print "Message from: "+em
                 try:
                     usr = User.objects.get( email = em )
                 except Exception:
